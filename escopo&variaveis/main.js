@@ -2,35 +2,84 @@
 // Let, Var, Const, Escopo de Função
 
 console.log("--------- Let ---------");
-
 // 1. Let: Variável de Escopo
-let nome = "Gerson";
-if (nome == "Gerson") {
-  let nomeCompleto = "Gerson Silva";
-  console.log("Seu nome completo é " + nomeCompleto);
-} //console.log('Seu nome completo é ' + nomeCompleto) -> Tentando acessar fora de onde foi definido a variável Let "nomeCompleto" temos um erro.
 
-for (let i = 1; i <= 5; i++) {
-  console.log("N° de repetições: " + i);
-} //console.log(i); Executando fora, o erro diz que a variável Let "i" não é definida, ou seja, ela não existe fora de onde foi criada.
+let preco = 20;
+function naTenda() {
+  let preco = 10;
+  console.log(
+    "Se levar AGORA meia duzia de bananas, maças e laranjas, paga só R$" + preco
+  );
+}
+naTenda();
+console.log("No mercado eu pagaria R$" + preco);
+// Ele não sobreescreve o preço, ele trata como se fossem 2 variáveis, uma dentro e outra fora do escopo.
+// Se tirar o let de dentro da Function, ainda sim funcionará, porém, se atribuirmos um let dentro e chamar fora, ele não roda.
 
-console.log("\n--------- Var ---------");
-
-//2. Var: Variável Global
-var idade = 18;
-var usuario = "José";
-function aniversarios() {
-  for (var x = 16; x <= idade; x++) {
-    console.log(`${usuario} fez ${x} anos!`);
+let promo = 0.6;
+function noMercado() {
+  let precoMercado = 20 * promo;
+  if (precoMercado >= 10) {
+    console.log("Na feira é mais barato que no mercado.");
+  } else {
+    console.log("Vale mais a pena comprar no mercado.");
   }
 }
-aniversarios();
+noMercado();
+// console.log(precoMercado) ---> Undefined
 
-if (idade == 18) {
-  console.log("Agora você pode dirigir " + usuario);
-  usuario = "Gerson";
-} else {
-  console.log("Você não pode dirigir, ainda...");
+console.log("\n--------- Var ---------");
+//2. Var: Variável Global
+var precoCarro = 100000;
+console.log("Preço original R$" + precoCarro);
+
+function precoPromocional() {
+  precoCarro = 90000;
+  console.log(
+    "Imperdível! De 100k você levara esse carro por apenas " + precoCarro
+  );
 }
+precoPromocional();
+console.log(precoCarro); // Diferente de Let, var sobreescreveu o valor quando a Function foi chamada.
 
-console.log("Bem vindo de volta, " + usuario);
+var endereçoCEP = "01310-100";
+function localizar() {
+  if (endereçoCEP == "01310-100") {
+    console.log("Não mudou de casa");
+  } else {
+    console.log("Mudou de casa");
+  }
+}
+localizar();
+localizar((endereçoCEP = "6656-420"));
+console.log(endereçoCEP);
+// É possível alterar QUASE em qualquer lugar variáveis Var
+
+console.log("\n-------- Const ---------");
+
+// 3. Const, "variável" Constante
+const meuCPF = 12345678906;
+function consultar() {
+  if (meuCPF == 12345678906) {
+    console.log("CPF válido");
+  } else {
+    console.log("CPF Inválido");
+  }
+}
+consultar();
+// consultar(meuCPF = 99968798291); --> Atribuição a uma variável Constante, então não pode ser mudado
+
+const pessoa = {
+  nome: "José",
+  apelido: "Jhony",
+};
+/* pessoa = {
+   nome: 'Gerson',
+   apelido: 'Ge'
+ }*/
+console.log(pessoa);
+
+// Não é possível mudar o valor de um Objeto assim, PORÉM:
+pessoa.nome = "Gerson";
+pessoa.apelido = "Ge";
+console.log(pessoa);
