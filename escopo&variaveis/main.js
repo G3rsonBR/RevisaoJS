@@ -1,7 +1,9 @@
 // Objetivo: Criar duas implementações para cada um dos seguintes itens
 // Let, Var, Const, Escopo de Função
 
-// 1. Let: Variável de Escopo, seu conteúdo, se definido dentro de um par de {}, só poderá ser acessado dentro deles.
+console.log("--------- Let ---------");
+
+// 1. Let: Variável de Escopo
 let nome = "Gerson";
 if (nome == "Gerson") {
   let nomeCompleto = "Gerson Silva";
@@ -11,3 +13,24 @@ if (nome == "Gerson") {
 for (let i = 1; i <= 5; i++) {
   console.log("N° de repetições: " + i);
 } //console.log(i); Executando fora, o erro diz que a variável Let "i" não é definida, ou seja, ela não existe fora de onde foi criada.
+
+console.log("\n--------- Var ---------");
+
+//2. Var: Variável Global
+var idade = 18;
+var usuario = "José";
+function aniversarios() {
+  for (var x = 16; x <= idade; x++) {
+    console.log(`${usuario} fez ${x} anos!`);
+  }
+}
+aniversarios();
+
+if (idade == 18) {
+  console.log("Agora você pode dirigir " + usuario);
+  usuario = "Gerson";
+} else {
+  console.log("Você não pode dirigir, ainda...");
+}
+
+console.log("Bem vindo de volta, " + usuario);
