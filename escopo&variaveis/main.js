@@ -83,3 +83,23 @@ console.log(pessoa);
 pessoa.nome = "Gerson";
 pessoa.apelido = "Ge";
 console.log(pessoa);
+
+console.log("\n------ Escopo de Função -----");
+//4. Escopo de Função, "Blocos"
+//No Restante desse arquivo, usamos diversas {}, que é justamente o Escopo, ou Bloco de Código. Vimos que ele serve para limitar ações
+//dentro das chaves.
+
+function soma(a, b) {
+  return a + b;
+}
+const resultado = soma(2, 6);
+console.log(resultado);
+
+if (resultado % 2 == 1) {
+  console.log("É Impar o Resultado");
+} else {
+  console.log("É Par o Resultado");
+}
+// If Else tbm usam Escopo.
+
+// Esses são exemplos do que podemos fazer com Let, Var, Const e com os Escopos de Função
